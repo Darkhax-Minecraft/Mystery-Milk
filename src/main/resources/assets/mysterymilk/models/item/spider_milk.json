@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "item/milk_bucket",
+        "layer1": "mysterymilk:item/spider"
+    }
+}
