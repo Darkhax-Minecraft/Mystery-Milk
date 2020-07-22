@@ -21,15 +21,15 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class MysteryMilk {
     
     private final Logger log = LogManager.getLogger("Mystery Milk");
-    private final RegistryHelper registry = new RegistryHelper("mysterymilk", this.log, new ItemGroupBase("mysterymilk", () -> new ItemStack(Items.MILK_BUCKET)));
+    private final RegistryHelper registry = new RegistryHelper("mysterymilk", this.log).withItemGroup(new ItemGroupBase("mysterymilk", () -> new ItemStack(Items.MILK_BUCKET)));
     
     public MysteryMilk() {
         
-        this.registry.registerItem(new ItemMysteryMilk(32, EntityType.SQUID, this::drinkSquidMilk), "squid_milk");
-        this.registry.registerItem(new ItemMysteryMilk(32, EntityType.RAVAGER, this::drinkRavengerMilk), "ravager_milk");
-        this.registry.registerItem(new ItemMysteryMilk(32, EntityType.SLIME, this::drinkSlimeMilk), "slime_milk");
-        this.registry.registerItem(new ItemMysteryMilk(32, EntityType.PHANTOM, this::drinkPhantomMilk), "phantom_milk");
-        this.registry.registerItem(new ItemMysteryMilk(32, e -> e instanceof SpiderEntity, this::drinkSpiderMilk), "spider_milk");
+        this.registry.items.register(new ItemMysteryMilk(32, EntityType.SQUID, this::drinkSquidMilk), "squid_milk");
+        this.registry.items.register(new ItemMysteryMilk(32, EntityType.RAVAGER, this::drinkRavengerMilk), "ravager_milk");
+        this.registry.items.register(new ItemMysteryMilk(32, EntityType.SLIME, this::drinkSlimeMilk), "slime_milk");
+        this.registry.items.register(new ItemMysteryMilk(32, EntityType.PHANTOM, this::drinkPhantomMilk), "phantom_milk");
+        this.registry.items.register(new ItemMysteryMilk(32, e -> e instanceof SpiderEntity, this::drinkSpiderMilk), "spider_milk");
         
         this.registry.initialize(FMLJavaModLoadingContext.get().getModEventBus());
     }
