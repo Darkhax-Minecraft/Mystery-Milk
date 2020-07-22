@@ -4,6 +4,7 @@ issueTrackerURL="https://github.com/Darkhax-Minecraft/mysterymilk/issues"
 
 [[mods]]
 modId="mysterymilk"
+updateJSONURL="https://updates.blamejared.com/get?n=mysterymilk&gv=1.16.1"
 version="${version}"
 displayName="${mod_name}"
 displayURL="${mod_download}"
