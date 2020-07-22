@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mysterymilk:slime_milk"
+    }
+  ],
+  "result": {
+    "item": "minecraft:slime_ball"
+  }
+}
