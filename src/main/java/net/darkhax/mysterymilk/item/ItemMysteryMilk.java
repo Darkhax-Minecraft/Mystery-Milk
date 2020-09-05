@@ -57,11 +57,14 @@ public class ItemMysteryMilk extends Item {
         final ItemStack heldItem = event.getItemStack();
         final PlayerEntity player = event.getPlayer();
         
-        if (this.milkingPredicate.test(event.getTarget()) && heldItem.getItem() == Items.BUCKET && !player.abilities.isCreativeMode && !event.getEntityLiving().isChild()) {
+        if (this.milkingPredicate.test(event.getTarget()) && heldItem.getItem() == Items.BUCKET && !event.getEntityLiving().isChild()) {
             
             player.playSound(SoundEvents.ENTITY_COW_MILK, 1.0F, 1.0F);
             
-            heldItem.shrink(1);
+            if (player.isCreative()) {
+                
+                heldItem.shrink(1);
+            }
             
             if (heldItem.isEmpty()) {
                 
