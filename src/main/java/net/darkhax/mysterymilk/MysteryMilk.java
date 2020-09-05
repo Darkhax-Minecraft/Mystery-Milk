@@ -6,13 +6,18 @@ import org.apache.logging.log4j.Logger;
 import net.darkhax.bookshelf.item.ItemGroupBase;
 import net.darkhax.bookshelf.registry.RegistryHelper;
 import net.darkhax.mysterymilk.item.ItemMysteryMilk;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.monster.RavagerEntity;
+import net.minecraft.entity.monster.SlimeEntity;
 import net.minecraft.entity.monster.SpiderEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -26,8 +31,8 @@ public class MysteryMilk {
     public MysteryMilk() {
         
         this.registry.items.register(new ItemMysteryMilk(32, EntityType.SQUID, this::drinkSquidMilk), "squid_milk");
-        this.registry.items.register(new ItemMysteryMilk(32, EntityType.RAVAGER, this::drinkRavengerMilk), "ravager_milk");
-        this.registry.items.register(new ItemMysteryMilk(32, EntityType.SLIME, this::drinkSlimeMilk), "slime_milk");
+        this.registry.items.register(new ItemMysteryMilk(32, EntityType.RAVAGER, this::drinkRavengerMilk).withMilkingEffect(this::onRavagerMilked), "ravager_milk");
+        this.registry.items.register(new ItemMysteryMilk(32, EntityType.SLIME, this::drinkSlimeMilk).withMilkingEffect(this::onSlimeMilked), "slime_milk");
         this.registry.items.register(new ItemMysteryMilk(32, EntityType.PHANTOM, this::drinkPhantomMilk), "phantom_milk");
         this.registry.items.register(new ItemMysteryMilk(32, e -> e instanceof SpiderEntity, this::drinkSpiderMilk), "spider_milk");
         
@@ -59,5 +64,27 @@ public class MysteryMilk {
     private void drinkSpiderMilk (World world, ServerPlayerEntity player) {
         
         player.addPotionEffect(new EffectInstance(Effects.POISON, 20 * 30));
+    }
+    
+    private ItemStack onSlimeMilked (PlayerEntity player, ItemStack milkStack, Entity entity) {
+        
+        if (entity instanceof SlimeEntity) {
+            
+            ((SlimeEntity) entity).setHealth(-5f);
+        }
+        
+        return milkStack;
+    }
+    
+    private ItemStack onRavagerMilked (PlayerEntity player, ItemStack milkStack, Entity entity) {
+        
+        if (entity instanceof RavagerEntity) {
+            
+            entity.playSound(SoundEvents.ENTITY_RAVAGER_STUNNED, 1.0F, 1.0F);
+            
+            ((RavagerEntity) entity).setRevengeTarget(player);
+        }
+        
+        return milkStack;
     }
 }

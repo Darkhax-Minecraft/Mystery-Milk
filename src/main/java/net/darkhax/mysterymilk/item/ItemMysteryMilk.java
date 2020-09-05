@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javax.annotation.Nullable;
 
+import net.darkhax.mysterymilk.IMilkEffect;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -31,6 +32,9 @@ public class ItemMysteryMilk extends Item {
     private final BiConsumer<World, ServerPlayerEntity> effect;
     private final Predicate<Entity> milkingPredicate;
     
+    @Nullable
+    private IMilkEffect milkingEffect;
+    
     public ItemMysteryMilk(int useTicks, Tag<Entity> type, BiConsumer<World, ServerPlayerEntity> effect) {
         
         this(useTicks, e -> type.contains(e), effect);
@@ -52,28 +56,40 @@ public class ItemMysteryMilk extends Item {
         MinecraftForge.EVENT_BUS.addListener(this::tryToMilk);
     }
     
+    public ItemMysteryMilk withMilkingEffect (IMilkEffect effect) {
+        
+        this.milkingEffect = effect;
+        return this;
+    }
+    
     private void tryToMilk (EntityInteract event) {
         
         final ItemStack heldItem = event.getItemStack();
         final PlayerEntity player = event.getPlayer();
         
-        if (this.milkingPredicate.test(event.getTarget()) && heldItem.getItem() == Items.BUCKET && !event.getEntityLiving().isChild()) {
+        if (!player.world.isRemote && this.milkingPredicate.test(event.getTarget()) && heldItem.getItem() == Items.BUCKET && !event.getEntityLiving().isChild()) {
             
             player.playSound(SoundEvents.ENTITY_COW_MILK, 1.0F, 1.0F);
             
-            if (player.isCreative()) {
+            if (!player.isCreative()) {
                 
                 heldItem.shrink(1);
             }
             
-            if (heldItem.isEmpty()) {
-                
-                player.setHeldItem(event.getHand(), new ItemStack(this));
+            ItemStack newStack = new ItemStack(this);
+            
+            if (this.milkingEffect != null) {
+                newStack = this.milkingEffect.apply(player, newStack, event.getTarget());
             }
             
-            else if (!player.inventory.addItemStackToInventory(new ItemStack(this))) {
+            if (heldItem.isEmpty()) {
                 
-                player.dropItem(new ItemStack(this), false);
+                player.setHeldItem(event.getHand(), newStack);
+            }
+            
+            else if (!player.inventory.addItemStackToInventory(newStack)) {
+                
+                player.dropItem(newStack, false);
             }
         }
     }
