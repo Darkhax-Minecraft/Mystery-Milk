@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 import net.darkhax.mysterymilk.IMilkEffect;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -67,9 +68,11 @@ public class ItemMysteryMilk extends Item {
         final ItemStack heldItem = event.getItemStack();
         final PlayerEntity player = event.getPlayer();
         
-        if (!player.world.isRemote && this.milkingPredicate.test(event.getTarget()) && heldItem.getItem() == Items.BUCKET && !event.getEntityLiving().isChild()) {
+        if (player instanceof ServerPlayerEntity && this.milkingPredicate.test(event.getTarget()) && heldItem.getItem() == Items.BUCKET && !event.getEntityLiving().isChild()) {
             
             player.playSound(SoundEvents.ENTITY_COW_MILK, 1.0F, 1.0F);
+            
+            CriteriaTriggers.PLAYER_ENTITY_INTERACTION.test((ServerPlayerEntity) player, event.getItemStack(), event.getTarget());
             
             if (!player.isCreative()) {
                 
@@ -79,6 +82,7 @@ public class ItemMysteryMilk extends Item {
             ItemStack newStack = new ItemStack(this);
             
             if (this.milkingEffect != null) {
+                
                 newStack = this.milkingEffect.apply(player, newStack, event.getTarget());
             }
             

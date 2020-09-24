@@ -5,5 +5,32 @@
   "item.mysterymilk.ravager_milk": "Ravager Milk",
   "item.mysterymilk.slime_milk": "Slime Milk",
   "item.mysterymilk.phantom_milk": "Phantom Milk",
-  "item.mysterymilk.spider_milk": "Spider Milk"
+  "item.mysterymilk.spider_milk": "Spider Milk",
+  
+  "item.minecraft.potion.effect.mysterymilk.inky": "Inky Potion",
+  "item.minecraft.potion.effect.mysterymilk.cursed": "Cursed Potion",
+  "item.minecraft.potion.effect.mysterymilk.slime": "Slime Potion",
+  "item.minecraft.potion.effect.mysterymilk.phantom_sight": "Phantom Sight Potion",
+  "item.minecraft.potion.effect.mysterymilk.venom": "Venom Bottle",
+  
+  "item.minecraft.splash_potion.effect.mysterymilk.inky": "Splash Potion of Ink",
+  "item.minecraft.splash_potion.effect.mysterymilk.cursed": "Cursed Splash Potion",
+  "item.minecraft.splash_potion.effect.mysterymilk.slime": "Slimey Splash Potion",
+  "item.minecraft.splash_potion.effect.mysterymilk.phantom_sight": "Splash Potion of Phantom Sight",
+  "item.minecraft.splash_potion.effect.mysterymilk.venom": "Splash Potion of Venom",
+  
+  "item.minecraft.potion.tipped_arrow.mysterymilk.inky": "Inky Arrow",
+  "item.minecraft.potion.tipped_arrow.mysterymilk.cursed": "Cursed Arrow",
+  "item.minecraft.potion.tipped_arrow.mysterymilk.slime": "Slimey Arrow",
+  "item.minecraft.potion.tipped_arrow.mysterymilk.phantom_sight": "Arrow of Phantom Sight",
+  "item.minecraft.potion.tipped_arrow.mysterymilk.venom": "Arrow of Venom",
+  
+  "item.minecraft.potion.lingering_potion.mysterymilk.inky": "Lingering Inky Potion",
+  "item.minecraft.potion.lingering_potion.mysterymilk.cursed": "Lingering Cursed Potion",
+  "item.minecraft.potion.lingering_potion.mysterymilk.slime": "Lingering Slimey Potion",
+  "item.minecraft.potion.lingering_potion.mysterymilk.phantom_sight": "Lingering Potion of Phantom Sight",
+  "item.minecraft.potion.lingering_potion.mysterymilk.venom": "Lingering Potion of Venom",
+  
+  "advancements.mysterymilk.cajones.title": "Big Cajones",
+  "advancements.mysterymilk.cajones.description": "Milk a Ravager?!"
 }
