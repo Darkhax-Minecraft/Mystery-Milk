@@ -296,7 +296,32 @@ task updateVersionTracker {
     }
 }
 
-task recompress(type:Exec, dependsOn: jar) {
+// Jar Signing
+import net.minecraftforge.gradle.common.task.SignJar
+
+task signJar(type: SignJar, dependsOn: jar) {
+
+    onlyIf {
     
-    commandLine 'advzip', '-z', '-4', '-i 8', jar.archivePath.toString()
+        project.hasProperty('keyStore')
+    }
+    
+    if (project.hasProperty('keyStore')) {
+    
+        project.logger.info('Signing jar ' + jar.archivePath.getName());
+    
+        keyStore = project.findProperty('keyStore')
+        alias = project.findProperty('keyStoreAlias')
+        storePass = project.findProperty('keyStorePass')
+        keyPass = project.findProperty('keyStoreKeyPass')
+        inputFile = jar.archivePath
+        outputFile = jar.archivePath
+    }
+
+    else {
+    
+        project.logger.warn('Could not sign ' + jar.archivePath.getName() + '. No keyStore property could be found')
+    }
 }
+
+build.dependsOn signJar
