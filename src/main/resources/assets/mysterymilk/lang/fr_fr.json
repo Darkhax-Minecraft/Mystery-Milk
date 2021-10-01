@@ -1,0 +1,36 @@
+{
+  "itemGroup.mysterymilk": "Mystery Milk",
+  
+  "item.mysterymilk.squid_milk": "Lait de poulpe",
+  "item.mysterymilk.ravager_milk": "Lait de ravageur",
+  "item.mysterymilk.slime_milk": "Lait de slime",
+  "item.mysterymilk.phantom_milk": "Lait de phantom",
+  "item.mysterymilk.spider_milk": "Lait d'araignée",
+  
+  "item.minecraft.potion.effect.mysterymilk.inky": "Potion d'encre",
+  "item.minecraft.potion.effect.mysterymilk.cursed": "Potion maudite",
+  "item.minecraft.potion.effect.mysterymilk.slime": "Potion de slime",
+  "item.minecraft.potion.effect.mysterymilk.phantom_sight": "Potion de vue fantôme",
+  "item.minecraft.potion.effect.mysterymilk.venom": "Potion de venin",
+  
+  "item.minecraft.splash_potion.effect.mysterymilk.inky": "Potion d'encre jetable",
+  "item.minecraft.splash_potion.effect.mysterymilk.cursed": "Potion maudite jetable",
+  "item.minecraft.splash_potion.effect.mysterymilk.slime": "Potion de slime jetable",
+  "item.minecraft.splash_potion.effect.mysterymilk.phantom_sight": "Potion de vue fantôme jetable",
+  "item.minecraft.splash_potion.effect.mysterymilk.venom": "Potion de venin jetable",
+  
+  "item.minecraft.potion.tipped_arrow.mysterymilk.inky": "Flèche d'encre",
+  "item.minecraft.potion.tipped_arrow.mysterymilk.cursed": "Flèche maudite",
+  "item.minecraft.potion.tipped_arrow.mysterymilk.slime": "Flèche de slime",
+  "item.minecraft.potion.tipped_arrow.mysterymilk.phantom_sight": "Flèche de vue fantôme",
+  "item.minecraft.potion.tipped_arrow.mysterymilk.venom": "Flèche de venin",
+  
+  "item.minecraft.potion.lingering_potion.mysterymilk.inky": "Potion d'encre persistante",
+  "item.minecraft.potion.lingering_potion.mysterymilk.cursed": "Potion maudite persistante",
+  "item.minecraft.potion.lingering_potion.mysterymilk.slime": "Potion de slime persistante",
+  "item.minecraft.potion.lingering_potion.mysterymilk.phantom_sight": "Potion de vue fantôme persistante",
+  "item.minecraft.potion.lingering_potion.mysterymilk.venom": "Potion de venin persistante",
+  
+  "advancements.mysterymilk.cajones.title": "Grosses cajones",
+  "advancements.mysterymilk.cajones.description": "Traire un ravageur ?!"
+}
